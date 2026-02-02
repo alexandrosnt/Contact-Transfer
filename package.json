@@ -1,0 +1,61 @@
+{
+  "name": "android-to-iphone",
+  "version": "1.0.0",
+  "description": "Transfer contacts between Android and iPhone via VCF files",
+  "license": "Apache-2.0",
+  "author": {
+    "name": "Contact Transfer",
+    "email": "contact@contacttransfer.app"
+  },
+  "homepage": "https://github.com/alexandrosnt/contact-transfer",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alexandrosnt/contact-transfer.git"
+  },
+  "main": "./out/main/index.js",
+  "scripts": {
+    "dev": "electron-vite dev",
+    "build": "electron-vite build",
+    "preview": "electron-vite preview",
+    "package": "electron-vite build && electron-builder --win",
+    "package:linux": "electron-vite build && electron-builder --linux",
+    "package:mac": "electron-vite build && electron-builder --mac",
+    "package:all": "electron-vite build && electron-builder --win --linux"
+  },
+  "dependencies": {
+    "electron-updater": "^6.1.7"
+  },
+  "devDependencies": {
+    "@electron-toolkit/preload": "^3.0.0",
+    "@electron-toolkit/utils": "^3.0.0",
+    "@sveltejs/vite-plugin-svelte": "^4.0.0",
+    "electron": "^28.1.0",
+    "electron-builder": "^24.9.1",
+    "electron-vite": "^2.0.0",
+    "sharp": "^0.34.5",
+    "svelte": "^5.0.0",
+    "typescript": "^5.3.3",
+    "vite": "^5.0.0"
+  },
+  "build": {
+    "appId": "com.contacttransfer.app",
+    "productName": "Contact Transfer",
+    "win": {
+      "target": ["nsis", "portable"],
+      "icon": "resources/icon.png"
+    },
+    "linux": {
+      "target": ["AppImage", "deb"],
+      "icon": "resources/icon.png",
+      "category": "Utility"
+    },
+    "mac": {
+      "target": ["dmg"],
+      "icon": "resources/icon.png",
+      "category": "public.app-category.utilities"
+    },
+    "directories": {
+      "output": "build"
+    }
+  }
+}
