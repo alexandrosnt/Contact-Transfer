@@ -20,9 +20,8 @@ jobs:
       - run: npm ci
 
       - name: Build & Package
-        run: npm run package
+        run: npx electron-vite build && npx electron-builder --win --publish never
         env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
           CSC_IDENTITY_AUTO_DISCOVERY: false
 
       - uses: actions/upload-artifact@v4
@@ -45,9 +44,7 @@ jobs:
       - run: npm ci
 
       - name: Build & Package
-        run: npm run package:linux
-        env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+        run: npx electron-vite build && npx electron-builder --linux --publish never
 
       - uses: actions/upload-artifact@v4
         with:
@@ -69,9 +66,8 @@ jobs:
       - run: npm ci
 
       - name: Build & Package
-        run: npm run package:mac
+        run: npx electron-vite build && npx electron-builder --mac --publish never
         env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
           CSC_IDENTITY_AUTO_DISCOVERY: false
 
       - uses: actions/upload-artifact@v4
